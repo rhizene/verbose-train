@@ -1,0 +1,22 @@
+
+.login {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    border: 1px solid #333;
+    input {
+        appearance: none;
+        display: inline-block;
+        &::after{
+            content: '\00a0';
+            display: block;
+        }
+    }
+    button {
+        appearance: none;
+    }
+
+    hr {
+        border: 1px solid #333;
+    }
+}
