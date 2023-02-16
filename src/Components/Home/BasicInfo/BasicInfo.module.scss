@@ -1,0 +1,26 @@
+.info {
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: small;
+    >div {
+        margin-bottom: 0.5rem;
+        box-sizing: border-box;
+        &:nth-child(odd) {
+            flex-shrink: 0;
+            width: 10%;
+            text-align: center;
+        }
+        &:nth-child(even) {
+            width: 90%;
+            border-left: 1px solid #333;
+            padding-left: 1rem;
+            a {
+                color: inherit;
+                font-family: 'Courier New', Courier, monospace;
+            }
+        }
+    }
+    
+}

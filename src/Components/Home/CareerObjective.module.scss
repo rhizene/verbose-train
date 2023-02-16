@@ -1,0 +1,40 @@
+
+.objective {
+    width: 100%;
+    text-align: justify;
+    border: 1px solid #333;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    >h2 {
+        display: inline-block;
+        +button {
+            margin-left: 1rem;
+            vertical-align: middle;
+        }
+    }
+    >dl>div {
+        padding: 0.5rem;
+        padding-bottom: 1.5rem;
+        display: flex;
+        &:nth-child(even) {
+            background-color: #EEE;
+        }
+        dt {
+            font-weight: bold;
+        }
+
+        >div:first-child {
+            box-sizing: border-box;
+            width: 8rem;
+            padding: 0 0.5rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-around;
+            flex-direction: column;
+            button {
+                padding: 0.2rem;
+            }
+        }
+    }
+}
