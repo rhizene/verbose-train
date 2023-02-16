@@ -1,13 +1,15 @@
 import { fireEvent, screen } from '@testing-library/react';
 import store from 'Containers/App/store';
+import { act } from 'react-dom/test-utils';
 import { renderWithProviders } from 'Testing/TestingUtils';
 import Login from './Login';
 import { logout } from './LoginSlice';
 
 describe('Login component', () => {
 
+    
     afterEach(()=>{
-        store.dispatch(logout());
+        act(()=>store.dispatch(logout()))
     });
 
     it('logs in', ()=>{

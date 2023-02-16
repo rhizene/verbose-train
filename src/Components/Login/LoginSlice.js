@@ -1,16 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const KEY_AUTHENTICATED = 'authenticated';
 export const loginSlice = createSlice({
     name: 'login',
     initialState: {
-        authenticated: false,
+        authenticated: localStorage[KEY_AUTHENTICATED] !== undefined,
     },
     reducers: {
         authenticate: (state) => {
             state.authenticated = true;
+            localStorage.setItem(KEY_AUTHENTICATED, true);
         },
         logout: (state) => {
             state.authenticated = false;
+            localStorage.removeItem(KEY_AUTHENTICATED);
         },
     }
 });
