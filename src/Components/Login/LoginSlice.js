@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Login from "./Login";
 
 const KEY_AUTHENTICATED = 'authenticated';
 export const loginSlice = createSlice({

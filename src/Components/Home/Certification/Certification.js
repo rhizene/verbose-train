@@ -1,3 +1,5 @@
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CareerObjectiveStyle from 'Components/Home/CareerObjective.module.scss';
 import { useDispatch, useSelector } from "react-redux";
 import CertificationListItem from './CertificationListItem';
@@ -25,7 +27,8 @@ export default function Certification() {
     }
 
     return <section className={CareerObjectiveStyle.objective}>
-        <h2>Certifications</h2><button disabled={isEditing} onClick={()=>appendItem()}>Add</button>
+        <h2>Certifications</h2>
+        <button disabled={isEditing} onClick={()=>appendItem()}><FontAwesomeIcon icon={faPlus} /> </button>
         <hr/>
         {getCertifications()}
     </section>

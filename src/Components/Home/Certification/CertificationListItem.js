@@ -1,7 +1,7 @@
-import React, { createRef, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleEditCertificate, removeCertificate, saveCertificate } from "./CertificationSlice";
 import CareerObjectiveStyle from 'Components/Home/CareerObjective.module.scss';
+import { createRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCertificate, saveCertificate, toggleEditCertificate } from "./CertificationSlice";
 
 
 export default function CertificationListItem({id}) {

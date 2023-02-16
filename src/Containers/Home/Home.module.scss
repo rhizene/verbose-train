@@ -1,0 +1,19 @@
+.home {
+    padding: 0.5rem;
+
+    button {
+        appearance: none;
+        border: 1px solid #333;
+        background-color: #FFF;
+        padding: 0.2rem 0.5rem;
+        border-radius: 5px;
+
+        &:disabled {
+            background-color: #DDD;
+            border-color: #DDD;
+            color: #333;
+        }
+        
+        
+    }
+}

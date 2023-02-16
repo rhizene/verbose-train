@@ -2,14 +2,16 @@
 .objective {
     width: 100%;
     text-align: justify;
-    border: 1px solid #333;
     margin-bottom: 1.5rem;
     box-sizing: border-box;
     >h2 {
         display: inline-block;
         +button {
             margin-left: 1rem;
-            vertical-align: middle;
+            vertical-align: text-bottom;
+            border: none;
+            background-color: #056405;
+            color: #FFF;
         }
     }
     >dl>div {
@@ -33,9 +35,6 @@
             align-items: stretch;
             justify-content: space-around;
             flex-direction: column;
-            button {
-                padding: 0.2rem;
-            }
 
             +div {
                 [contentEditable=true] {
