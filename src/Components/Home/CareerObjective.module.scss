@@ -19,6 +19,7 @@
         &:nth-child(even) {
             background-color: #EEE;
         }
+
         dt {
             font-weight: bold;
         }
@@ -35,6 +36,21 @@
             button {
                 padding: 0.2rem;
             }
+
+            +div {
+                [contentEditable=true] {
+                    border-bottom: 1px solid;
+                }
+                .dateField {
+                    display: inline-block;
+                    min-width: 10rem;
+                }
+            }
         }
     }
+}
+
+
+.textRight {
+    text-align: right;
 }

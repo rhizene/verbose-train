@@ -1,46 +1,31 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { append, remove } from "./CertificationSlice";
-import CareerObjectiveStyle from 'Components/Home/CareerObjective.module.scss'
+import CareerObjectiveStyle from 'Components/Home/CareerObjective.module.scss';
+import { useDispatch, useSelector } from "react-redux";
+import CertificationListItem from './CertificationListItem';
+import { appendCertificate } from "./CertificationSlice";
 
 
 
 export default function Certification() {
     const dispatch = useDispatch();
     const certificationData = useSelector(state => state.certification.data);
+    const dataList = useSelector(state => state.certification.data);
+    const isEditing = dataList.findIndex(data => data.isEditing) != -1;
 
     function appendItem(){
-        dispatch(append());
-    }
+        dispatch(appendCertificate());
 
-    function deleteItem(id){
-        dispatch(remove({id}));
     }
 
     function getCertifications(){
             return <dl>{
                 certificationData.map(certification => 
-                    <div key={certification.id}>
-                        <div>
-                            <button>Edit</button>
-                            <button onClick={()=>deleteItem(certification.id)}>Delete</button>
-                        </div>
-                        <div>
-                            <dt>{certification.name}</dt>
-                            <sup>{certification.from} - {certification.to}</sup>
-                            <div>Description:</div>
-                            <dd>{certification.description}</dd>
-                            <div>Reason:</div>
-                            <dd>{certification.reason}</dd>
-                        </div>
-                    </div>  
+                    <CertificationListItem key={certification.id} id={certification.id} />
                     )
                 }</dl>;
     }
 
     return <section className={CareerObjectiveStyle.objective}>
-        <h2>Certifications</h2><button onClick={()=>appendItem()}>Add</button>
+        <h2>Certifications</h2><button disabled={isEditing} onClick={()=>appendItem()}>Add</button>
         <hr/>
         {getCertifications()}
     </section>
