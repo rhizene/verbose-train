@@ -1,12 +1,15 @@
-import Login from '../../Components/Login/Login';
+import Login from 'Components/Login/Login';
+import Home from 'Containers/Home/Home';
+import { Provider } from 'react-redux';
+import store from './store';
 
-function App() {
+
+export default function App() {
   return (
-    <div>
+    <Provider store={store}>
       <Login></Login>
-    </div>
+      <Home></Home>
+    </Provider>
     
   );
 }
-
-export default App;
