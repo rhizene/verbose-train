@@ -1,0 +1,17 @@
+{
+  "name": "verbose-train-api",
+  "version": "1.0.0",
+  "description": "api for verbose-train",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.4"
+  }
+}
