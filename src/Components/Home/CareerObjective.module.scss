@@ -4,18 +4,32 @@
     text-align: justify;
     margin-bottom: 1.5rem;
     box-sizing: border-box;
-    >button {
-        margin-left: 1rem;
-        vertical-align: text-bottom;
-    }
-    >h2 {
-        display: inline-block;
-        +button {
-            
-            background-color: #056405;
-            color: #FFF;
+    overflow-y: scroll;
+    flex-grow: 1;
+    .fixedTitle{
+        position: fixed;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        z-index: 1;
+
+        >button {
+            margin-left: 1rem;
+            vertical-align: text-bottom;
+        }
+        >h2 {
+            display: inline-block;
+            +button {
+                
+                background-color: #056405;
+                color: #FFF;
+            }
         }
     }
+    .spacer {
+        height: 6rem;
+    }
+    
     >dl {
         &.disabled {
             opacity: 0.5;
@@ -26,8 +40,11 @@
             padding: 0.5rem;
             padding-bottom: 1.5rem;
             display: flex;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
             &:nth-child(even) {
-                background-color: #EEE;
+                background-color: rgb(100, 100, 100, 0.3);
+                backdrop-filter: blur(1rem);
             }
     
             dt {
@@ -68,6 +85,7 @@
     font-size: 3rem;
     text-align: center;
     svg {
+        margin-bottom: -6rem;
         animation: rotato 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
     }
     

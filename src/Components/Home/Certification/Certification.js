@@ -34,15 +34,19 @@ export default function Certification() {
     }
 
     return <section className={CareerObjectiveStyle.objective}>
-        <h2>Certifications</h2>
-        <button disabled={isEditing} onClick={()=>appendItem()}><FontAwesomeIcon icon={faPlus} /> </button>
-        <button disabled={isEditing} onClick={()=>refreshList()}><FontAwesomeIcon icon={faRefresh} /> </button>
-        <hr/>
+        <div className={CareerObjectiveStyle.fixedTitle}>
+            <h2>Certifications</h2>
+            <button disabled={isEditing} onClick={()=>appendItem()}><FontAwesomeIcon icon={faPlus} /> </button>
+            <button disabled={isEditing} onClick={()=>refreshList()}><FontAwesomeIcon icon={faRefresh} /> </button>
+            <hr/>
+        </div>
+        <div className={CareerObjectiveStyle.spacer}>
         {
             isFetchingData ? 
                 <div className={CareerObjectiveStyle.loaderContainer}><FontAwesomeIcon  icon={faSpinner} /></div>
                 : null
         }
+        </div>
         
         {renderCertifications()}
     </section>
