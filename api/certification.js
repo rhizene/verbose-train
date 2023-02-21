@@ -47,14 +47,14 @@ Certification.seed = async ()=>{
                 $to: 'August 24, 2019',
                 
             },
-            // {
-            //     $name: 'SQL Fundamentals',
-            //     $description: 'a 2-day course by Orange and Bronze Software Labs that teaches how business requirements become database designs, and the basics of reading and writing to a relational database using SQL (Structured Query Language)',
-            //     $reason: 'As recommended',
-            //     $from: 'November 19, 2018',
-            //     $to: 'November 20, 2018',
+            {
+                $name: 'SQL Fundamentals',
+                $description: 'a 2-day course by Orange and Bronze Software Labs that teaches how business requirements become database designs, and the basics of reading and writing to a relational database using SQL (Structured Query Language)',
+                $reason: 'As recommended',
+                $from: 'November 19, 2018',
+                $to: 'November 20, 2018',
                 
-            // },
+            },
         ];
 
         const connection = getConnection();
