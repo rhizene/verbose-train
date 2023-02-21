@@ -5,6 +5,24 @@ import { setupDatabase } from './database.js';
 
 const expressApp = express();
 const port = 5000;
+const CLIENT_PORT = 3000;
+const allowedOrigins = [
+    `http://127.0.0.1:${CLIENT_PORT}`,
+    `http://localhost:${CLIENT_PORT}`
+];
+  
+
+function corsHandler(req, res, next) {
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    }
+    
+    next();
+};
+
+expressApp.use(corsHandler);
 
 expressApp.get('/certification', async (req, res) => {
     const categories = await Certification.getAll()
