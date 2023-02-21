@@ -1,4 +1,5 @@
-import { createRef, useState } from "react";
+import { getCertificates } from "Components/Home/Certification/CertificationSlice";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoginStyle from "./Login.module.scss";
 import { authenticate } from "./LoginSlice";
@@ -15,8 +16,8 @@ export default function Login() {
         setLoggingIn(true);
 
         setTimeout(()=>{
-            dispatch(authenticate());
             setLoggingIn(false);
+            dispatch(authenticate());
         }, 3000);
     }
 

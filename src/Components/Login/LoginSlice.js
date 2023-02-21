@@ -9,12 +9,18 @@ export const loginSlice = createSlice({
     },
     reducers: {
         authenticate: (state) => {
-            state.authenticated = true;
             localStorage.setItem(KEY_AUTHENTICATED, true);
+            return {
+                ...state,
+                authenticated: true
+            };
         },
         logout: (state) => {
-            state.authenticated = false;
             localStorage.removeItem(KEY_AUTHENTICATED);
+            return {
+                ...state,
+                authenticated: false
+            };
         },
     }
 });
