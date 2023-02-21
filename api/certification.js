@@ -11,6 +11,7 @@ const UPDATE_QUERY = `UPDATE ${TABLE_NAME} SET
     'from'        = $from,
     'to'          = $to
     WHERE id = $id`;
+const DELETE_QUERY = `DELETE FROM ${TABLE_NAME} WHERE id = $id`;
 
 function Certification ({name, description, reason, from, to}) {
     this.name        = name;
@@ -117,6 +118,19 @@ Certification.update = ({id, name, description, reason, from, to}) => {
             $id: id,
         }, (error, result)=>{
             if(error) return reject({message: 'Problem updating Certification', error});
+            resolve(result);
+        })
+        .finalize();
+
+    })
+}
+
+Certification.delete = ({id}) => {    
+    return new Promise((resolve, reject)=>{
+        getConnection().prepare(DELETE_QUERY).run({
+            $id: id,
+        }, (error, result)=>{
+            if(error) return reject({message: 'Problem deleting Certification', error});
             resolve(result);
         })
         .finalize();

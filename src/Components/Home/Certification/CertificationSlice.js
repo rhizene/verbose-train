@@ -94,7 +94,13 @@ export const certificationSlice = createSlice({
             return newState;
         },
 
-        removeCertificate: (state, action) => {
+        deleteCertificateBegin: state => {
+            return {...state};
+        },
+        deleteCertificateFailure: state => {
+            return {...state};
+        },
+        deleteCertificateSuccess: (state, action) => {
             const {id} = action.payload;
             const newData = state.data.filter(item => item.id !== id);
             const newState = {
@@ -108,7 +114,9 @@ export const certificationSlice = createSlice({
 
 export const {
     appendCertificate,
-    removeCertificate,
+    deleteCertificateBegin,
+    deleteCertificateSuccess,
+    deleteCertificateFailure,
     toggleEditCertificate,
     createCertificateBegin,
     createCertificateFailure,

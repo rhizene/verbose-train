@@ -66,6 +66,15 @@ expressApp.put('/certification', async (req, res) => {
         });
 });
 
+expressApp.delete('/certification/:id', async (req, res) => {
+    Certification.delete(req.params)
+        .then(() => res.sendStatus(200))
+        .catch(error => {
+            console.error({message: 'Certificate delete failed', error})
+            res.sendStatus(400);
+        });
+});
+
 setupDatabase()
 .then(()=>{
     expressApp.listen(port, () => {

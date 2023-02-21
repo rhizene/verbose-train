@@ -1,9 +1,10 @@
 import createCertificate from 'Actions/createCertificate';
+import deleteCertificate from 'Actions/deleteCertificate';
 import updateCertificate from 'Actions/updateCertificate';
 import CareerObjectiveStyle from 'Components/Home/CareerObjective.module.scss';
 import { createRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCertificate, toggleEditCertificate } from "./CertificationSlice";
+import { toggleEditCertificate } from "./CertificationSlice";
 
 
 export default function CertificationListItem({id}) {
@@ -34,7 +35,7 @@ export default function CertificationListItem({id}) {
     });
 
     function deleteItem(){
-        dispatch(removeCertificate({id}));
+        dispatch(deleteCertificate({id}));
     }
 
     function editItem(){
