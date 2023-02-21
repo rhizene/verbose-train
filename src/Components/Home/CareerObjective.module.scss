@@ -53,3 +53,27 @@
 .textRight {
     text-align: right;
 }
+
+.loaderContainer {
+    font-size: 3rem;
+    text-align: center;
+    svg {
+        animation: rotato 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+    }
+    
+}
+
+@keyframes rotato {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+}

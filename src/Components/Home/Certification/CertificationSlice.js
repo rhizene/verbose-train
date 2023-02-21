@@ -1,18 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
-import resume from "Components/Home/resume";
 
 export const certificationSlice = createSlice({
     name: 'certification',
     initialState: {
-        data: [...resume.trainings.map(training => (
-            {
-                ...training,
-                isEditing: false,
-            }
-            ))],
-        index: resume.trainings.length
+        data: [],
+        index: 0,
+        isFetching: false,
     },
     reducers: {
+        fetchCertificatesBegin: state => {
+            return {
+                ...state,
+                isFetching: true,
+            }
+        },
+        fetchCertificatesSuccess:  (state, {payload}) => {
+            const {certifications} = payload;
+            
+            const data = certifications;
+
+            const newState = {
+                ...state,
+                data,
+                index: data.length,
+                isFetching: false,
+            };
+            return newState;
+        },
+        fetchCertificatesFailure: (state)=>{
+            return {
+                ...state,
+                isFetching: false,
+            }
+        },
         appendCertificate: (state) => {
             const id = state.index + 1;
             const newState = {
@@ -78,5 +98,13 @@ export const certificationSlice = createSlice({
     }
 });
 
-export const {appendCertificate, removeCertificate, toggleEditCertificate, saveCertificate,  } = certificationSlice.actions;
+export const {
+    appendCertificate,
+    removeCertificate,
+    toggleEditCertificate,
+    saveCertificate,
+    fetchCertificatesBegin,
+    fetchCertificatesSuccess,
+    fetchCertificatesFailure,
+} = certificationSlice.actions;
 export default certificationSlice.reducer;
