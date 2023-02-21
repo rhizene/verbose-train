@@ -12,7 +12,7 @@ export default function fetchCertificates(){
                         isEditing: false,
                     }
                     ))
-                    setTimeout(()=>dispatch(fetchCertificatesSuccess({certifications})), 3000);
+                    setTimeout(()=>dispatch(fetchCertificatesSuccess({certifications})), 800);
             })
             .catch(errors=>{
                 console.error({message: 'fetching certificates failed', errors});

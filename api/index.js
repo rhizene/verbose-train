@@ -1,6 +1,7 @@
 import express from 'express';
 import Certification from './certification.js';
 import { setupDatabase } from './database.js';
+import bodyParser from 'body-parser';
 
 
 const expressApp = express();
@@ -23,12 +24,23 @@ function corsHandler(req, res, next) {
 };
 
 expressApp.use(corsHandler);
+expressApp.use(bodyParser.urlencoded());
+expressApp.use(express.json());
 
 expressApp.get('/certification', async (req, res) => {
     const categories = await Certification.getAll()
         .catch(err => []);
 
     res.send(categories);
+});
+
+expressApp.post('/certification', async (req, res) => {
+    Certification.create(req.body)
+        .then(() => res.sendStatus(200))
+        .catch(error => {
+            console.error({message: 'Certificate creation failed', error})
+            res.sendStatus(300);
+        });
 });
 
 setupDatabase()

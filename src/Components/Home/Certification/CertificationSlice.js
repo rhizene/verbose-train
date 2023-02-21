@@ -4,7 +4,6 @@ export const certificationSlice = createSlice({
     name: 'certification',
     initialState: {
         data: [],
-        index: 0,
         isFetching: false,
     },
     reducers: {
@@ -22,7 +21,6 @@ export const certificationSlice = createSlice({
             const newState = {
                 ...state,
                 data,
-                index: data.length,
                 isFetching: false,
             };
             return newState;
@@ -34,12 +32,10 @@ export const certificationSlice = createSlice({
             }
         },
         appendCertificate: (state) => {
-            const id = state.index + 1;
             const newState = {
                 ...state,
-                index: id,
                 data: [...state.data, {
-                    id,
+                    id: null,
                     name: '',
                     description: '',
                     reason: '',
@@ -69,6 +65,12 @@ export const certificationSlice = createSlice({
 
         },
 
+        createCertificateBegin: state=>{
+            return {...state};
+        },
+        createCertificateFailure: state=>{
+            return {...state};
+        },
         saveCertificate: (state, action) => {
             const updatedCertificate = action.payload;
 
@@ -102,7 +104,8 @@ export const {
     appendCertificate,
     removeCertificate,
     toggleEditCertificate,
-    saveCertificate,
+    createCertificateBegin,
+    createCertificateFailure,
     fetchCertificatesBegin,
     fetchCertificatesSuccess,
     fetchCertificatesFailure,
