@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![verbose-train](https://user-images.githubusercontent.com/7390894/220397786-af345d4b-4803-45c8-8c7c-ded4daad0040.png)
+
+
 ## Getting started
 1. Clone this repository
 2. Run `npm i` to install dependencies
