@@ -71,6 +71,12 @@ export const certificationSlice = createSlice({
         createCertificateFailure: state=>{
             return {...state};
         },
+        updateCertificateBegin: state=>{
+            return {...state};
+        },
+        updateCertificateFailure: state=>{
+            return {...state};
+        },
         saveCertificate: (state, action) => {
             const updatedCertificate = action.payload;
 
@@ -109,5 +115,7 @@ export const {
     fetchCertificatesBegin,
     fetchCertificatesSuccess,
     fetchCertificatesFailure,
+    updateCertificateBegin,
+    updateCertificateFailure,
 } = certificationSlice.actions;
 export default certificationSlice.reducer;

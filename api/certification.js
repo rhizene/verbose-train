@@ -3,7 +3,14 @@ import { getConnection } from "./database.js";
 
 const TABLE_NAME = 'certification';
 const CREATE_QUERY = `INSERT INTO ${TABLE_NAME} ('name', 'description', 'reason', 'from', 'to')
-VALUES ($name, $description, $reason, $from, $to)`;
+    VALUES ($name, $description, $reason, $from, $to)`;
+const UPDATE_QUERY = `UPDATE ${TABLE_NAME} SET
+    'name'        = $name,
+    'description' = $description,
+    'reason'      = $reason,
+    'from'        = $from,
+    'to'          = $to
+    WHERE id = $id`;
 
 function Certification ({name, description, reason, from, to}) {
     this.name        = name;
@@ -92,6 +99,24 @@ Certification.create = ({name, description, reason, from, to}) => {
             $to: to,
         }, (error, result)=>{
             if(error) return reject({message: 'Problem making Certification', error});
+            resolve(result);
+        })
+        .finalize();
+
+    })
+}
+
+Certification.update = ({id, name, description, reason, from, to}) => {    
+    return new Promise((resolve, reject)=>{
+        getConnection().prepare(UPDATE_QUERY).run({
+            $name: name,
+            $description: description,
+            $reason: reason,
+            $from: from,
+            $to: to,
+            $id: id,
+        }, (error, result)=>{
+            if(error) return reject({message: 'Problem updating Certification', error});
             resolve(result);
         })
         .finalize();

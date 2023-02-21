@@ -1,4 +1,5 @@
 import createCertificate from 'Actions/createCertificate';
+import updateCertificate from 'Actions/updateCertificate';
 import CareerObjectiveStyle from 'Components/Home/CareerObjective.module.scss';
 import { createRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,17 +42,24 @@ export default function CertificationListItem({id}) {
     }
 
     function saveEdit(){
-        if(id === null) {
-            dispatch(
-                createCertificate({
-                    name:        nameFieldRef.current.innerText,
-                    from:        fromFieldRef.current.innerText,
-                    to:          toFieldRef.current.innerText,
-                    description: descriptionFieldRef.current.innerText,
-                    reason:      reasonFieldRef.current.innerText,
-                }));
-        }
+        const saveAction = (id === null)
+            ?  createCertificate({
+                name:        nameFieldRef.current.innerText,
+                from:        fromFieldRef.current.innerText,
+                to:          toFieldRef.current.innerText,
+                description: descriptionFieldRef.current.innerText,
+                reason:      reasonFieldRef.current.innerText,
+            })
+            : updateCertificate({
+                id,
+                name:        nameFieldRef.current.innerText,
+                from:        fromFieldRef.current.innerText,
+                to:          toFieldRef.current.innerText,
+                description: descriptionFieldRef.current.innerText,
+                reason:      reasonFieldRef.current.innerText,
+            })
         
+        dispatch(saveAction);
         dispatch(toggleEditCertificate({id, isEditing: false}));
     }
 
